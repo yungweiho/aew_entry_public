@@ -1,0 +1,293 @@
+$colorBlack: Black
+$colorWhite: #fff
+$colorBrown: #A06F21
+$colorgreen: #577D90
+$colorGray: #DFDFDF
+$colorDeepGray: #707070
+$colorSuperGray: #373737
+$colorborder: #AAAAAA
+$gray: #BEB4B4
+$lightgray: #b9b9b9
+$darkgray: #707070
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap')
+
+@mixin size($w,$h:$w)
+  width: $w
+  height: $h
+
+@mixin ssize($w,$h:$w)
+  min-width: $w
+  min-height: $h
+
+@mixin ab_full
+  position: absolute
+  +size(100%)
+  
+@mixin flexCenter
+  display: flex
+  justify-content: center
+  align-items: center
+
+@mixin flexcolumn
+  display: flex
+  flex-direction: column
+
+@mixin flexrow
+  display: flex
+  flex-direction: row
+
+@mixin font
+  font-family: '微軟正黑體'
+
+@mixin c
+  color: $colorBlack
+
+@mixin link
+  text-decoration: none
+  color: $colorBlack
+
+@mixin bb
+  border: solid 1px $colorBlack
+
+@mixin bgcover
+  background-position: center
+  background-size: cover
+  background-repeat: no-repeat
+
+@mixin bgcon
+  background-position: center
+  background-size: contain
+  background-repeat: no-repeat
+
+@mixin ani
+  animation: fade-down 0.5s ease forwards
+
+@mixin shakeleft
+  animation: shakeleft 1.5s ease infinite
+
+@mixin trans
+  transition-duration: 0.5s
+
+*
+  font-family: '微軟正黑體'
+
+a
+  text-decoration: none
+  color: black
+
+@mixin flexCenter
+  display: flex
+  justify-content: center
+  align-items: center
+
+@keyframes fade
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+@keyframes fade-down
+  0%
+    opacity: 0
+    transform: translate(0, -5%)
+    
+  100%
+    opacity: 1
+    transform: translate(0, 0)
+
+
+@keyframes slide-fade1
+  0%
+    transform: translate(-10%, 0)
+    opacity: 0
+  100%
+    opacity: 1
+    transform: translate(0, 0)
+
+@keyframes shakeleft
+  0%
+    // transform: translate(0)
+    opacity: 0.5
+    margin-left: -3%
+  50%
+    margin-left: -5%
+    opacity: 1
+    // transform: translateX(-10%)
+  100%
+    opacity: 0.5
+    margin-left: -3%
+    // transform: translateX(0)
+
+@keyframes shakeright
+  0%
+    transform: translate(0, 0)
+    // opacity: 0
+  50%
+    transform: translate(10%, 0)
+  100%
+    // opacity: 1
+    transform: translate(0, 0)
+
+
+@keyframes rot
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(720deg)
+
+
+@keyframes rot2
+  0%
+    // transform: scale(0.8)
+    transform: scale(0.8) rotate(0deg)
+    
+  100%
+    // transform: scale(0.8)
+    transform: scale(0.8) rotate(720deg)
+
+@keyframes changecolorgray
+  0%
+    fill: #D6D7D9
+  12.5%
+    fill: #C0C2C4
+  25%
+    fill: #AAABAD
+  37.5%
+    fill: #939496
+  50%
+    fill: #AAABAD
+    opacity: 0
+  62.5%
+    fill: #939496
+  75%
+    fill: #AAABAD
+  87.5%
+    fill: #C0C2C4
+  100%
+    fill: #D6D7D9
+
+@keyframes gray2
+  0%
+    fill: #f6f6f6
+  50%
+    fill: #fff
+    opacity: 0
+  100%
+    fill: #f6f6f6
+  
+  
+@keyframes long
+
+  0%
+    transform: scaleX(1)
+  50%
+    transform: scaleX(1.5)
+  100%
+    transform: scaleX(1)
+
+@keyframes short
+  0%
+    transform: scaleX(1)
+  50%
+    transform: scaleX(0.5)
+  100% 
+    transform: scaleX(1)
+
+@keyframes smaller
+  25%
+    fill: #fff
+
+// === transition ===
+
+.mobile_menu_animate-enter, .mobile_menu_animate-leave-to
+  opacity: 0
+  transform: translateY(-10%)
+
+.mobile_menu_animate-enter-active, .mobile_menu_animate-leave-active
+  transition: all 0.5s
+
+.side_animate-enter, .side_animate-leave-to
+  transform: translateX(-100%)
+
+.side_animate-enter-active, .side_animate-leave-active
+  transition: all 0.5s
+
+.fade-enter, .fade-leave-to
+  opacity: 0
+
+.fade-enter-active, .fade-leave-active
+  transition: all 0.5s
+
+//RWD
+
+// $break_llg: 1800px
+$break_llg: 1800px
+$break_lg: 1600px
+$break_md: 1000px
+$break_msd: 900px
+$break_ssm: 600px
+$break_xxs: 500px
+
+//Normal
+
+@mixin maxcom
+  @media all and (min-width: 2100px)
+    @content
+
+@mixin lgcom
+  @media all and (max-width: 1800px)
+    @content
+
+@mixin com
+  @media all and (max-width: 1500px)
+    @content
+
+@mixin smallcom
+  @media all and (max-width: 1200px)
+    @content
+
+@mixin pad
+  @media all and (max-width: 900px)
+    @content
+
+@mixin phone
+  @media all and (max-width: 610px)
+    @content
+
+@mixin phone5
+  @media all and (max-width: 350px)
+    @content
+
+
+
+
+//特殊
+@mixin phonex
+  @media all and (max-height: 900px) and (min-height: 800px)
+    @content
+
+@mixin padpro
+  @media all and (min-width: 900px) and (max-width: 1200px) and (min-height: 1200px) and (max-height: 1400px)
+    @content
+
+@mixin phonelan 
+  @media all and (min-width: 500px) and (max-width: 900px) and (orientation: landscape)
+    @content
+
+@mixin ie
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) 
+    @content
+
+@mixin padlan 
+  @media all and (min-width: 900px) and (max-width: 1100px) and (orientation: landscape) and (min-height: 600px) and (max-height: 900px)
+    @content
+
+@mixin phone6
+  @media all and (min-width: 300px) and (max-width: 400px) and (min-height: 600px) and (max-height: 700px)
+    @content
+
+@mixin phone6p
+  @media all and (min-width: 400px) and (max-width: 500px) and (min-height: 700px) and (max-height: 800px)
+    @content
+
